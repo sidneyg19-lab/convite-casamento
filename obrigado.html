@@ -4,45 +4,68 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Obrigado pela Confirmação 💍</title>
+
   <style>
+    :root { font-family: "Playfair Display", serif; }
+
     body {
-      font-family: Arial, sans-serif;
-      background: #f7f3ff;
+      background: #fff8f0;
       text-align: center;
       padding: 60px 20px;
-      color: #51306a;
+      color: #5a4a2d;
     }
+
     .card {
-      background: white;
+      background: #ffffff;
       padding: 40px;
-      border-radius: 18px;
-      max-width: 450px;
+      border-radius: 20px;
+      max-width: 500px;
       margin: 0 auto;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 30px rgba(180,160,100,0.25);
+      border: 2px solid #f2e3b0;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 1s ease-out forwards;
     }
+
+    @keyframes fadeIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     h1 {
-      font-size: 28px;
+      font-size: 30px;
       margin-bottom: 10px;
+      color: #b99b55;
     }
+    
     p {
       font-size: 18px;
       margin-bottom: 20px;
+      color: #4b3c25;
+      line-height: 1.6;
     }
+
     a {
       text-decoration: none;
       color: white;
-      background: #7a4cc4;
-      padding: 12px 20px;
+      background: #b99b55;
+      padding: 14px 24px;
       border-radius: 12px;
       display: inline-block;
       font-size: 18px;
+      font-weight: 600;
+      transition: all .2s;
+    }
+
+    a:hover {
+      background: #caae68;
     }
   </style>
 </head>
 <body>
 
   <div class="card">
-    <h1>Obrigado! 💜</h1>
+    <h1>Obrigado! 💛</h1>
     <p>Sua confirmação foi registrada com sucesso.</p>
     <p>Ficamos muito felizes em ter você conosco nesse dia tão especial!</p>
 
