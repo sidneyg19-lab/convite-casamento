@@ -14,73 +14,118 @@
   <meta property="og:url" content="https://sidneyg19-lab.github.io/confirmacao-presenca/" />
 
   <style>
-    :root { font-family: "Playfair Display", serif; margin:0; padding:0; }
-    body { 
-      display:flex; 
-      align-items:center; 
-      justify-content:center; 
-      min-height:100vh; 
-      background:#fff8f0; 
-      color:#5a4a2d; 
-      padding:20px; 
+    :root {
+      font-family: "Playfair Display", serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: #fff8f0;
+      color: #5a4a2d;
+      padding: 20px;
     }
 
     .card {
-      width:100%; 
-      max-width:720px; 
-      background:#ffffff; 
-      padding:28px; 
-      border-radius:16px; 
-      box-shadow:0 4px 30px rgba(180,160,100,0.2); 
-      border:2px solid #f2e3b0; 
-      text-align:center;
-      opacity:0; 
-      transform:translateY(20px);
-      animation:fadeIn 1.1s ease-out forwards;
+      width: 100%;
+      max-width: 720px;
+      background: #ffffff;
+      padding: 28px;
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(180,160,100,0.2);
+      border: 2px solid #f2e3b0;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 1.1s ease-out forwards;
     }
 
-    @keyframes fadeIn { to { opacity:1; transform:translateY(0); } }
+    @keyframes fadeIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 18px;
+      transition: transform .5s;
+    }
+
+    .card img:hover {
+      transform: scale(1.03);
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-top: 0;
+      color: #b99b55;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #4b3c25;
+    }
 
     form {
-      margin-top:25px;
-      padding:20px;
-      background:#fff6e6;
-      border-radius:12px;
-      border:2px solid #f2e3b0;
-      text-align:left;
+      margin-top: 25px;
+      padding: 20px;
+      background: #fff6e6;
+      border-radius: 12px;
+      border: 2px solid #f2e3b0;
+      text-align: left;
     }
 
-    form label { 
-      display:block; 
-      margin-bottom:6px; 
-      font-weight:600; 
-      color:#6a5837;
+    form label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #6a5837;
     }
 
-    form input, form select {
-      width:100%;
-      padding:10px;
-      margin-bottom:14px;
-      border-radius:8px;
-      border:1px solid #d4c7a1;
-      font-size:15px;
+    form input,
+    form select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 14px;
+      border-radius: 8px;
+      border: 1px solid #d4c7a1;
+      font-size: 15px;
     }
 
-    a.button, button.button {
-      display:inline-block;
-      margin:10px 5px;
-      padding:12px 20px;
-      background:#b99b55;
-      color:#fff;
-      border-radius:8px;
-      text-decoration:none;
-      font-weight:600;
-      border:none;
-      cursor:pointer;
+    button.button {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 14px;
+      width: 100%;
+      background: #b99b55;
+      color: #fff;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 16px;
+    }
+
+    button.button:hover {
+      background: #cfb878;
     }
 
     .hidden {
       display: none;
+    }
+
+    .small {
+      font-size: 13px;
+      color: #8d7b55;
+      margin-top: 16px;
     }
   </style>
 </head>
@@ -88,11 +133,10 @@
 <body>
   <div class="card">
 
-    <img 
+    <img
       src="https://raw.githubusercontent.com/sidneyg19-lab/confirmacao-presenca/main/convite1.jpeg"
       alt="Sidney e Gabrielly"
-      style="width:100%; max-width:600px; border-radius:20px; margin-bottom:18px;"
-    >
+    />
 
     <h1>Sidney & Gabrielly 💕</h1>
 
@@ -101,7 +145,7 @@
       no dia <b>26 de dezembro de 2025</b> em Brasília.
     </p>
 
-    <p>Confirme sua presença até <b>01/12/2025</b>.</p>
+    <p><b>Confirme sua presença até 01/12/2025.</b></p>
 
     <!-- FORMULÁRIO -->
     <form action="https://formsubmit.co/mgabriellybc@gmail.com" method="POST">
@@ -110,7 +154,7 @@
       <input type="text" name="nome" required>
 
       <label>Vai ao casamento?</label>
-      <select name="confirmacao" required>
+      <select name="confirmacao" id="confirmaSelect" required>
         <option value="">Selecione</option>
         <option value="Sim">Sim, estarei presente</option>
         <option value="Não">Não poderei ir</option>
@@ -124,14 +168,15 @@
         <option value="3+">3 ou mais</option>
       </select>
 
-      <!-- CAMPO EXTRA PARA QUANTIDADE ACIMA DE 3 -->
+      <!-- CAMPO EXTRA PARA MAIS DE 3 -->
       <div id="maisDeTresDiv" class="hidden">
-        <label>Quantos acompanhantes ao total?</label>
-        <input type="number" name="quantidade_acima_de_3" min="3" placeholder="Ex: 4, 5, 6..." />
+        <label>Quantidade total de acompanhantes:</label>
+        <input type="number" name="quantidade_acima_de_3" min="3" placeholder="Ex: 3, 4, 5..." />
       </div>
 
       <button class="button" type="submit">💛 Enviar confirmação</button>
 
+      <!-- CONFIG DO FORMSUBMIT -->
       <input type="hidden" name="_captcha" value="false">
       <input type="hidden" name="_template" value="box">
       <input type="hidden" name="_subject" value="Nova confirmação de presença!">
@@ -139,18 +184,15 @@
     </form>
 
     <p class="small">Com carinho, Sidney & Gabrielly 💛</p>
+
   </div>
 
   <script>
-    const select = document.getElementById("acompanhantesSelect");
+    const selectAcomp = document.getElementById("acompanhantesSelect");
     const campoExtra = document.getElementById("maisDeTresDiv");
 
-    select.addEventListener("change", function () {
-      if (select.value === "3+") {
-        campoExtra.classList.remove("hidden");
-      } else {
-        campoExtra.classList.add("hidden");
-      }
+    selectAcomp.addEventListener("change", function () {
+      campoExtra.classList.toggle("hidden", selectAcomp.value !== "3+");
     });
   </script>
 
